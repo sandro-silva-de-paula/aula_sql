@@ -24,3 +24,5 @@ with connection:
             'PRIMARY KEY (id)'
             ') '
         )
+
+# teste git
