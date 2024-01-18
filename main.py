@@ -72,13 +72,38 @@ with connection:
     #     print(sql, data_dic)
     # connection.commit()
 
-# Lendo valores com SELECT
+    # Lendo valores com SELECT
+    # with connection.cursor() as cursor:
+    #     # sql
+    #     id_busca = 3
+    #     sql = (f'SELECT idade, nome FROM {TABLE_NAME} '
+    #            'WHERE  id=%s ')
+    #     cursor.execute(sql, id_busca)
+    #     lista_dados = cursor.fetchall()
+    #     for row in lista_dados:
+    #         print(row)
+    #     print(len(lista_dados))
+    #     print(cursor.mogrify(sql, id_busca))  # mostar o comando sql
 
+    # Deletando registro
+    # with connection.cursor() as cursor:
+    #     # sql
+    #     id_busca = 10
+    #     sql = (f'DELETE FROM {TABLE_NAME} '
+    #            'WHERE  id=%s ')
+    #     print(cursor.execute(sql, id_busca))
+    #     connection.commit()
+
+    #     print(cursor.mogrify(sql, id_busca))  # mostar o comando sql
+
+    # Editando registro
     with connection.cursor() as cursor:
         # sql
-        sql = (f'SELECT * FROM {TABLE_NAME} ')
-        cursor.execute(sql)
-        lista_dados = cursor.fetchall()
-        for row in lista_dados:
-            print(row)
-        print(len(lista_dados))
+        id_busca = 2
+        New_nome = 'Sandro Silva '
+        sql = (f'UPDATE  {TABLE_NAME} SET nome = %s WHERE  id=%s ')
+        print(cursor.execute(sql, (New_nome, id_busca)))
+        connection.commit()
+
+        # mostar o comando sql
+        print(cursor.mogrify(sql, (New_nome, id_busca)))
